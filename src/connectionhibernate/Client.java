@@ -1,5 +1,8 @@
 package connectionhibernate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import javax.persistence.Entity;
 import javax.persistence.*;
 
@@ -61,6 +64,12 @@ public class Client {
 		return "Client [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
 				+ "]";
 	}
+	
+	public void addRequests(Request order) {
+		if(orders==null) orders = new ArrayList<>();
+		orders.add(order);
+		order.setClientId(this);
+	}
 
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")
@@ -79,6 +88,10 @@ public class Client {
 	
 	@Column(name="direccion")
 	private String direccion;
+	
+	@OneToMany(mappedBy="cliente", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Request> orders; 
+	
 	
 }
 
