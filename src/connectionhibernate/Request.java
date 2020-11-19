@@ -1,6 +1,6 @@
 package connectionhibernate;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -32,7 +32,7 @@ public class Request {
 		this.clientId = clientId;
 	}
 
-	public Request(Date aDate) {
+	public Request(GregorianCalendar aDate) {
 		this.aDate = aDate;
 	}
 
@@ -47,13 +47,13 @@ public class Request {
 	private int id;
 	
 	@Column(name="A_DATE")
-	private Date aDate;
+	private GregorianCalendar aDate;
 	
 	@Column(name="PAYMENT")
 	private String payment;
 
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@Column(name="CLIENT_ID")
+	@JoinColumn(name="CLIENT_ID")
 	private Client clientId;
 	
 }

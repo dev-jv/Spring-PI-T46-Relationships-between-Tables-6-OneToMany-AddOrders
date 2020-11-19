@@ -11,7 +11,7 @@ public class InsertClient {
 		// create session factory
 		SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml")
 									.addAnnotatedClass(Client.class)
-									.addAnnotatedClass(DetailsClient.class)
+									.addAnnotatedClass(DetailsClient.class)								
 									.buildSessionFactory();
 		
 		// create session
@@ -22,6 +22,7 @@ public class InsertClient {
 			// create a client object
 //			Client client1 = new Client("Draco", "Strange", "Av. Shimpaku Trees K48, Somewhere City");
 			Client client1 = new Client("Harry", "Strange", "Av. Kaede Trees K48, Somewhere City");
+
 			
 			DetailsClient detailsClient1= new DetailsClient("www.SmallTrees.com", "943145478", "Ikigai Concept");
 			
